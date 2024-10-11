@@ -1,0 +1,32 @@
+defmodule <%= @module_name %>.Repo.Migrations.CreateMosaicTables do
+  use Ecto.Migration
+
+  def change do
+    create table(:mosaic_emails, primary_key: false) do
+      add(:id, :uuid, primary_key: true, null: false)
+
+      add(:from, :string, null: false)
+      add(:reply_to, :string, null: false)
+
+      # :to can be null because this template could be used on a form,
+      # in which case the :to field will come from the data later on.
+      add(:to, {:array, :string}, default: [])
+
+      # These are keys that are used to access fields on the incoming data
+      # where the email addresses are stored.
+      add(:to_keys, {:array, :string}, default: [])
+
+      add(:cc, {:array, :string}, default: [])
+      add(:bcc, {:array, :string}, default: [])
+
+      add(:subject, :string, null: false)
+      add(:body, :string)
+
+      add(:use_template, :boolean, null: false, default: false)
+
+      add(:template, :map)
+
+      timestamps()
+    end
+  end
+end
