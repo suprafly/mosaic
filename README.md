@@ -1,6 +1,10 @@
 # Mosaic
 
-**TODO: Add description**
+![mosaic](mosaic_01.jpeg)
+
+## Overview
+
+An email framework using Liquid templates.
 
 ## Installation
 
